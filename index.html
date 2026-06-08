@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brava | Padel Gear &amp; Circulation Support</title>
-<meta name="description" content="Brava is a padel store. Overgrips, socks, towels, caps, bags, bands, plus Circulation, our blood-flow support for fast rallies and long social sessions. Padel is a party. Bring your A-game.">
+<title>Padel Supply Store | Padel Gear &amp; Circulation Support</title>
+<meta name="description" content="Padel Supply Store is a padel store. Overgrips, socks, towels, caps, bags, bands, plus Circulation, our blood-flow support for fast rallies and long social sessions. Padel is a party. Bring your A-game.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -105,10 +105,10 @@
   }
   .wordmark {
     font-family: var(--display); font-weight: 800;
-    font-size: 24px; letter-spacing: -0.02em;
-    display: flex; align-items: center; gap: 9px;
+    font-size: clamp(15px, 2.4vw, 20px); letter-spacing: -0.02em;
+    display: flex; align-items: center; gap: 9px; white-space: nowrap;
   }
-  .wordmark .mk-dot { width: 13px; height: 13px; border-radius: 999px; background: var(--turq); border: 2px solid var(--pink); display:inline-block; }
+  .wordmark .mk-dot { width: 13px; height: 13px; border-radius: 999px; background: var(--turq); border: 2px solid var(--pink); display:inline-block; flex: 0 0 auto; }
   .navlinks { display: flex; gap: clamp(14px, 2.2vw, 30px); font-size: 13px; font-weight: 600; }
   .navlinks a { transition: color .2s; }
   .navlinks a:hover { color: var(--turq-deep); }
@@ -330,7 +330,7 @@
   footer { background: var(--ink); color: var(--cream); padding: clamp(52px, 7vw, 92px) clamp(18px, 4vw, 56px) 30px; }
   .foot-grid { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: clamp(28px, 5vw, 72px); padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,0.16); }
   @media (max-width: 880px) { .foot-grid { grid-template-columns: 1fr 1fr; gap: 30px; } }
-  .foot-mark { font-family: var(--display); font-weight: 800; font-size: 28px; margin-bottom: 14px; display:flex; align-items:center; gap:9px; letter-spacing: -0.02em; }
+  .foot-mark { font-family: var(--display); font-weight: 800; font-size: clamp(20px, 3.4vw, 28px); margin-bottom: 14px; display:flex; align-items:center; gap:9px; letter-spacing: -0.02em; }
   .foot-mark .mk-dot { width: 12px; height: 12px; border-radius: 999px; background: var(--turq); border: 2px solid var(--pink); display:inline-block; }
   .foot-blurb { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.6); max-width: 320px; }
   .foot-h { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--turq); margin-bottom: 16px; font-weight: 700; }
@@ -435,11 +435,11 @@
 </div>
 
 <header class="nav">
-  <a href="#" class="wordmark"><span class="mk-dot"></span>Brava</a>
+  <a href="#" class="wordmark"><span class="mk-dot"></span>Padel Supply Store</a>
   <nav class="navlinks">
     <a href="#circulation">Circulation</a>
     <a href="#collage">On Court</a>
-    <a href="#promise">Why Brava</a>
+    <a href="#promise">Why Us</a>
   </nav>
   <button class="bag-btn" id="bagOpen" aria-label="Open bag">
     <span>Bag</span><span class="bag-count empty" id="bagCount">0</span>
@@ -449,7 +449,7 @@
 <!-- TOP WORD TICKER -->
 <div class="ticker ticker-pink" aria-hidden="true">
   <div class="ticker-track">
-    <span>padel</span><span class="sep">/</span><span>rallies</span><span class="sep">/</span><span>social</span><span class="sep">/</span><span>brava</span><span class="sep">/</span><span>padel</span><span class="sep">/</span><span>rallies</span><span class="sep">/</span><span>social</span><span class="sep">/</span><span>brava</span><span class="sep">/</span><span>padel</span><span class="sep">/</span><span>rallies</span><span class="sep">/</span><span>social</span><span class="sep">/</span><span>brava</span><span class="sep">/</span>
+    <span>padel</span><span class="sep">/</span><span>rallies</span><span class="sep">/</span><span>social</span><span class="sep">/</span><span>padel supply store</span><span class="sep">/</span><span>padel</span><span class="sep">/</span><span>rallies</span><span class="sep">/</span><span>social</span><span class="sep">/</span><span>padel supply store</span><span class="sep">/</span><span>padel</span><span class="sep">/</span><span>rallies</span><span class="sep">/</span><span>social</span><span class="sep">/</span><span>padel supply store</span><span class="sep">/</span>
   </div>
 </div>
 
@@ -477,7 +477,7 @@
 <section class="section promise" id="promise">
   <div class="sec-head" style="margin-bottom: clamp(28px,4vw,44px);">
     <div>
-      <p class="sec-kicker">Why Brava</p>
+      <p class="sec-kicker">Why Padel Supply Store</p>
       <h2 class="sec-title">Loud gear, no spin.</h2>
     </div>
   </div>
@@ -504,7 +504,7 @@
 <footer>
   <div class="foot-grid">
     <div>
-      <div class="foot-mark"><span class="mk-dot"></span>Brava</div>
+      <div class="foot-mark"><span class="mk-dot"></span>Padel Supply Store</div>
       <p class="foot-blurb">A padel store. A short, fun kit and Circulation, our blood-flow support for fast rallies and long social sessions. Free US shipping over $100.</p>
     </div>
     <div>
@@ -512,7 +512,7 @@
       <ul class="foot-list">
         <li><a href="#circulation">Circulation</a></li>
         <li><a href="#collage">On-Court Gear</a></li>
-        <li><a href="#promise">Why Brava</a></li>
+        <li><a href="#promise">Why Padel Supply Store</a></li>
       </ul>
     </div>
     <div>
