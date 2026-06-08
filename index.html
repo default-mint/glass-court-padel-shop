@@ -10,16 +10,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   /* ───────────────────────────────────────────────
-     BRAVA - Court Report Filmstrip (restyled)
-     Reuses Baseline's "Court Report Filmstrip" structure
-     per user request: 3 stacked banners, sticky nav w/ live
-     cart count, full-bleed hero, Circulation supplement
-     spotlight band, horizontal scroll-snap gear filmstrips,
+     BRAVA - Asymmetric Collage (restructured)
+     Bold, playful, social padel collage homepage:
+     3 stacked banners, sticky nav w/ live cart count,
+     a MOSAIC of varied-size overlapping product tiles
+     (2x2 hero tiles, tall tiles, small tiles, rotated/
+     offset, hover lift/zoom), oversized rotating display
+     type tickers woven between tiles, the Circulation
+     supplement as a large feature tile with 3 priced tiers,
      product modal, right cart drawer + localStorage + toast.
      Brand: Brava. Bold, social, playful padel store.
-     Palette: turquoise #12B2A6, pink #E8447F (loud sale strip),
+     Palette: turquoise #12B2A6, pink #E8447F (loud strip),
      off-white #F7F5F0, navy ink #16263A, aqua wash #DDF1EE.
-     Backgrounds are never flat (washes + dot/court texture).
      Type: Unbounded (display) + Onest (body).
      Voice: bold, social, playful. "Padel is a party."
      ─────────────────────────────────────────────── */
@@ -120,45 +122,7 @@
   .bag-count.empty { background: var(--line); color: var(--ink-soft); }
   @media (max-width: 820px) { .navlinks { display: none; } }
 
-  /* ───── Hero ───── */
-  .hero {
-    position: relative;
-    min-height: clamp(440px, 72vh, 660px);
-    display: flex; align-items: flex-end;
-    overflow: hidden;
-    color: #fff;
-  }
-  .hero img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center 45%;
-    z-index: 0;
-  }
-  .hero::after {
-    content: ''; position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(to top, rgba(12,18,30,0.86) 0%, rgba(18,178,166,0.22) 55%, rgba(232,68,127,0.1) 100%);
-  }
-  .hero-inner {
-    position: relative; z-index: 2;
-    padding: clamp(28px, 5vw, 64px) clamp(18px, 4vw, 56px) clamp(36px, 5vw, 64px);
-    max-width: 780px;
-  }
-  .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 700;
-    color: var(--turq);
-    margin-bottom: 18px;
-  }
-  .hero-eyebrow::before { content:''; width: 22px; height: 2px; background: var(--pink); display:inline-block; }
-  .hero h1 {
-    font-family: var(--display); font-weight: 800;
-    font-size: clamp(38px, 6.6vw, 80px);
-    line-height: 0.98; letter-spacing: -0.03em;
-    margin-bottom: 18px;
-  }
-  .hero h1 .line2 { color: var(--turq); }
-  .hero p { font-size: clamp(15px, 1.6vw, 18px); max-width: 540px; color: rgba(255,255,255,0.92); margin-bottom: 26px; }
-  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+  /* ───── Buttons (shared) ───── */
   .btn {
     display: inline-flex; align-items: center; gap: 10px;
     font-weight: 700; font-size: 14px;
@@ -170,129 +134,197 @@
   .btn-ghost { background: rgba(255,255,255,0.12); color:#fff; border: 1px solid rgba(255,255,255,0.5); }
   .btn-ghost:hover { background: rgba(255,255,255,0.22); }
 
-  /* ───── Section frame ───── */
+  /* ───── Word ticker (oversized rotating display type) ───── */
+  .ticker {
+    overflow: hidden; white-space: nowrap;
+    border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink);
+    padding: 10px 0; position: relative;
+  }
+  .ticker-pink { background: var(--pink); border-color: #fff; }
+  .ticker-pink .ticker-track { color: #fff; }
+  .ticker-turq { background: var(--turq); border-color: var(--ink); }
+  .ticker-turq .ticker-track { color: var(--ink); }
+  .ticker-track {
+    display: inline-block; white-space: nowrap;
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(26px, 5vw, 58px); letter-spacing: -0.02em;
+    text-transform: lowercase;
+    animation: marquee 22s linear infinite;
+  }
+  .ticker-rev .ticker-track { animation-direction: reverse; animation-duration: 28s; }
+  .ticker-track span { padding: 0 24px; display: inline-block; }
+  .ticker-track .sep { color: rgba(255,255,255,0.55); }
+  .ticker-turq .ticker-track .sep { color: rgba(22,38,58,0.4); }
+  .ticker:hover .ticker-track { animation-play-state: paused; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ───── Collage mosaic ───── */
+  .collage-section {
+    padding: clamp(40px, 6vw, 80px) clamp(14px, 3.5vw, 48px);
+    background:
+      radial-gradient(circle at 88% 6%, rgba(232,68,127,0.10), transparent 38%),
+      radial-gradient(circle at 6% 94%, rgba(18,178,166,0.10), transparent 40%),
+      var(--cream);
+  }
+  .collage-head {
+    max-width: 1320px; margin: 0 auto clamp(26px, 3.5vw, 44px);
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; flex-wrap: wrap;
+  }
+  .collage-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 700;
+    color: var(--turq-deep); margin-bottom: 14px;
+  }
+  .collage-eyebrow::before { content:''; width: 22px; height: 2px; background: var(--pink); display:inline-block; }
+  .collage-head h1 {
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(34px, 6vw, 76px); line-height: 0.95; letter-spacing: -0.03em; max-width: 12ch;
+  }
+  .collage-head h1 .accent { color: var(--turq); }
+  .collage-head .lede { font-size: 14px; color: var(--ink-soft); max-width: 320px; line-height: 1.7; }
+
+  .mosaic {
+    max-width: 1320px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: clamp(150px, 19vw, 250px);
+    gap: clamp(12px, 1.6vw, 22px);
+  }
+
+  /* Base tile */
+  .tile {
+    position: relative; overflow: hidden;
+    border-radius: 20px;
+    background: var(--paper);
+    border: 1px solid var(--line-soft);
+    transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s, z-index 0s;
+    will-change: transform;
+  }
+  .tile:hover { transform: rotate(0deg) translateY(-6px) scale(1.015); box-shadow: 0 22px 50px rgba(22,38,58,0.20); z-index: 5; }
+
+  /* Spans + playful rotation/offset */
+  .tile.big   { grid-column: span 2; grid-row: span 2; }
+  .tile.tall  { grid-row: span 2; }
+  .tile.wide  { grid-column: span 2; }
+  .tile.rot-a { transform: rotate(-1.6deg); }
+  .tile.rot-b { transform: rotate(1.8deg); }
+  .tile.rot-c { transform: rotate(-2.4deg); }
+  .tile.off   { margin-top: 14px; }
+
+  /* Product tile */
+  .ptile { cursor: pointer; display: flex; flex-direction: column; }
+  .ptile-img { flex: 1; background: var(--aqua); overflow: hidden; position: relative; min-height: 0; }
+  .ptile-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+  .ptile:hover .ptile-img img { transform: scale(1.08); }
+  .ptile-tag {
+    position: absolute; top: 12px; left: 12px;
+    background: var(--ink); color:#fff;
+    font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700;
+    padding: 5px 10px; border-radius: 999px; z-index: 2;
+  }
+  .ptile-add {
+    position: absolute; top: 12px; right: 12px;
+    width: 42px; height: 42px; border-radius: 999px;
+    background: var(--pink); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; font-weight: 600; line-height: 1; z-index: 3;
+    opacity: 0; transform: scale(.6); transition: opacity .25s, transform .25s, background .2s;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.22);
+  }
+  .ptile:hover .ptile-add { opacity: 1; transform: scale(1); }
+  .ptile-add:hover { background: var(--pink-deep); }
+  .ptile-foot {
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 10px;
+    padding: 13px 15px 15px; background: var(--paper);
+  }
+  .ptile-name { font-family: var(--display); font-weight: 600; font-size: clamp(13px, 1.3vw, 17px); line-height: 1.1; letter-spacing: -0.01em; }
+  .ptile-kind { font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--turq-deep); font-weight: 700; margin-bottom: 4px; display: block; }
+  .ptile-price { font-family: var(--display); font-weight: 700; font-size: clamp(13px, 1.3vw, 16px); white-space: nowrap; }
+
+  /* Word tile (graphic display type inside the grid) */
+  .wordtile {
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 18px; overflow: hidden;
+  }
+  .wordtile.fill-pink { background: var(--pink); border-color: var(--pink); }
+  .wordtile.fill-turq { background: var(--turq); border-color: var(--turq); }
+  .wordtile.fill-navy { background: var(--ink); border-color: var(--ink); }
+  .wordtile span {
+    font-family: var(--display); font-weight: 800; line-height: 0.92;
+    font-size: clamp(22px, 3.4vw, 44px); letter-spacing: -0.03em; color: #fff;
+    text-transform: lowercase;
+  }
+  .wordtile.fill-turq span { color: var(--ink); }
+  .wordtile .spin {
+    display: inline-block;
+    animation: spinword 7s ease-in-out infinite;
+  }
+  @keyframes spinword { 0%,100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+
+  /* Circulation feature tile */
+  .feattile {
+    grid-column: span 2; grid-row: span 2;
+    background:
+      radial-gradient(circle at 85% 12%, rgba(232,68,127,0.4), transparent 45%),
+      linear-gradient(140deg, var(--turq) 0%, var(--turq-deep) 100%);
+    color: #fff; padding: clamp(20px, 2.4vw, 32px);
+    display: flex; flex-direction: column; cursor: default;
+    border-color: var(--turq-deep);
+  }
+  .feattile:hover { transform: translateY(-4px); box-shadow: 0 24px 56px rgba(12,18,30,0.3); }
+  .feat-top { display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; }
+  .feat-imgwrap {
+    background: rgba(255,255,255,0.96); border-radius: 16px; padding: 12px;
+    width: clamp(96px, 12vw, 150px); aspect-ratio: 1/1; flex-shrink: 0;
+    box-shadow: 0 16px 40px rgba(12,18,30,0.28);
+  }
+  .feat-imgwrap img { width: 100%; height: 100%; object-fit: contain; }
+  .feat-headcol { flex: 1; min-width: 160px; }
+  .feat-kicker { display:inline-flex; align-items:center; gap:8px; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; color: #fff; background: var(--pink); padding: 5px 11px; border-radius: 999px; margin-bottom: 12px; }
+  .feat-title { font-family: var(--display); font-weight: 800; font-size: clamp(26px, 3.4vw, 46px); line-height: 0.96; letter-spacing: -0.03em; margin-bottom: 10px; }
+  .feat-lead { font-size: 13.5px; color: rgba(255,255,255,0.94); line-height: 1.6; max-width: 460px; }
+  .feat-ing { font-size: 12px; color: rgba(255,255,255,0.84); margin-top: 12px; line-height: 1.5; }
+  .feat-ing strong { color:#fff; font-weight: 700; }
+  .feat-buy { margin-top: auto; padding-top: 18px; }
+  .feat-price { font-family: var(--display); font-weight: 700; font-size: 24px; margin-bottom: 12px; }
+  .feat-price span { font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.72); font-family: var(--body); }
+  .feat-tiers { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+  .feat-tiers .btn { padding: 11px 18px; font-size: 13px; }
+  .feat-tiers .btn-pack { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.55); color:#fff; }
+  .feat-tiers .btn-pack:hover { background: rgba(255,255,255,0.24); }
+  .feat-tiers .btn-primary { background: var(--pink); }
+  .feat-add.btn { background: #fff; color: var(--ink); }
+  .feat-add.btn:hover { background: var(--cream); transform: translateY(-2px); }
+  .feat-disc { font-size: 10.5px; color: rgba(255,255,255,0.66); margin-top: 12px; line-height: 1.5; }
+
+  /* Responsive collage breakpoints */
+  @media (max-width: 900px) {
+    .mosaic { grid-template-columns: repeat(2, 1fr); grid-auto-rows: clamp(150px, 38vw, 220px); }
+    .tile.big, .tile.wide, .feattile { grid-column: span 2; }
+    .tile.tall { grid-row: span 2; }
+    .feattile { grid-row: span 2; }
+    .tile.rot-a, .tile.rot-b, .tile.rot-c { transform: none; }
+    .tile.off { margin-top: 0; }
+  }
+  @media (max-width: 540px) {
+    .mosaic { grid-template-columns: 1fr; grid-auto-rows: 200px; }
+    .tile.big, .tile.tall, .tile.wide, .feattile { grid-column: span 1; grid-row: span 1; }
+    .feattile { grid-row: span 2; min-height: 480px; }
+    .wordtile { min-height: 120px; }
+  }
+
+  /* ───── Promise trio ───── */
   .section { padding: clamp(48px, 7vw, 92px) clamp(18px, 4vw, 56px); }
   .sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: clamp(22px, 3vw, 36px); max-width: 1320px; margin-left:auto; margin-right:auto; }
   .sec-kicker { font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; font-weight: 700; color: var(--turq-deep); margin-bottom: 10px; }
   .sec-title { font-family: var(--display); font-weight: 700; font-size: clamp(28px, 4.2vw, 50px); line-height: 1; letter-spacing: -0.02em; }
   .sec-note { font-size: 13px; color: var(--ink-soft); max-width: 320px; }
-
-  /* ───── Circulation spotlight ───── */
-  .spotlight {
-    background:
-      radial-gradient(circle at 85% 12%, rgba(232,68,127,0.35), transparent 42%),
-      radial-gradient(circle at 12% 88%, rgba(221,241,238,0.18), transparent 40%),
-      linear-gradient(135deg, var(--turq) 0%, var(--turq-deep) 100%);
-    color: #fff;
-    padding: clamp(48px, 7vw, 96px) clamp(18px, 4vw, 56px);
-    position: relative; overflow: hidden;
-  }
-  .spotlight::before {
-    content:''; position:absolute; left: 0; right: 0; top: 50%;
-    height: 2px; background: rgba(255,255,255,0.18);
-  }
-  .spot-grid {
-    max-width: 1180px; margin: 0 auto;
-    display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(32px, 5vw, 72px);
-    align-items: center; position: relative; z-index: 1;
-  }
-  @media (max-width: 880px) { .spot-grid { grid-template-columns: 1fr; } }
-  .spot-imgwrap {
-    background: rgba(255,255,255,0.96); border-radius: 22px;
-    padding: 18px; aspect-ratio: 1/1; max-width: 420px; width: 100%;
-    margin: 0 auto;
-    box-shadow: 0 24px 60px rgba(12,18,30,0.3);
-  }
-  .spot-imgwrap img { width: 100%; height: 100%; object-fit: contain; }
-  .spot-kicker { display:inline-flex; align-items:center; gap:8px; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; font-weight: 700; color: #fff; background: var(--pink); padding: 6px 12px; border-radius: 999px; margin-bottom: 16px; }
-  .spot-title { font-family: var(--display); font-weight: 800; font-size: clamp(34px, 5vw, 58px); line-height: 0.98; letter-spacing: -0.03em; margin-bottom: 16px; }
-  .spot-lead { font-size: clamp(15px, 1.5vw, 17px); color: rgba(255,255,255,0.94); margin-bottom: 22px; max-width: 520px; }
-  .spot-benefits { list-style: none; display: grid; gap: 10px; margin-bottom: 24px; max-width: 540px; }
-  .spot-benefits li { display: flex; gap: 12px; font-size: 14px; color: rgba(255,255,255,0.96); }
-  .spot-benefits li::before { content:''; flex-shrink:0; margin-top: 7px; width: 8px; height: 8px; border-radius: 999px; background: var(--pink); }
-  .spot-ing { font-size: 12.5px; color: rgba(255,255,255,0.82); letter-spacing: 0.02em; margin-bottom: 26px; max-width: 540px; }
-  .spot-ing strong { color: #fff; font-weight: 700; }
-  .spot-buy { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
-  .spot-price { font-family: var(--display); font-weight: 700; font-size: 30px; }
-  .spot-price span { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.7); font-family: var(--body); }
-  .spot-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-  .spot-actions .btn-primary { background: var(--pink); }
-  .spot-actions .btn-pack { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.55); color:#fff; }
-  .spot-actions .btn-pack:hover { background: rgba(255,255,255,0.24); }
-  .spot-disc { font-size: 11px; color: rgba(255,255,255,0.66); margin-top: 18px; max-width: 540px; line-height: 1.55; }
-
-  /* ───── Filmstrips ───── */
-  .strip-wrap { max-width: 1320px; margin: 0 auto; }
-  .strip {
-    display: flex; gap: 20px;
-    overflow-x: auto; overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    padding: 6px 4px 22px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin; scrollbar-color: var(--turq) var(--aqua);
-  }
-  .strip::-webkit-scrollbar { height: 8px; }
-  .strip::-webkit-scrollbar-track { background: var(--aqua); border-radius: 999px; }
-  .strip::-webkit-scrollbar-thumb { background: var(--turq); border-radius: 999px; }
-  .pcard {
-    flex: 0 0 clamp(230px, 30vw, 300px);
-    scroll-snap-align: start;
-    background: var(--paper);
-    border: 1px solid var(--line-soft);
-    border-radius: 18px; overflow: hidden;
-    cursor: pointer;
-    display: flex; flex-direction: column;
-    transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;
-  }
-  .pcard:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(22,38,58,0.14); }
-  .pcard-img { aspect-ratio: 1/1; background: var(--aqua); overflow: hidden; position: relative; }
-  .pcard-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
-  .pcard:hover .pcard-img img { transform: scale(1.05); }
-  .pcard-tag {
-    position: absolute; top: 12px; left: 12px;
-    background: var(--ink); color:#fff;
-    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700;
-    padding: 5px 10px; border-radius: 999px;
-  }
-  .pcard-add {
-    position: absolute; bottom: 12px; right: 12px;
-    width: 40px; height: 40px; border-radius: 999px;
-    background: var(--pink); color: #fff;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; font-weight: 600; line-height: 1;
-    opacity: 0; transform: translateY(6px); transition: opacity .25s, transform .25s, background .2s;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-  }
-  .pcard:hover .pcard-add { opacity: 1; transform: translateY(0); }
-  .pcard-add:hover { background: var(--pink-deep); }
-  .pcard-body { padding: 16px 16px 18px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
-  .pcard-name { font-family: var(--display); font-weight: 600; font-size: 18px; line-height: 1.12; letter-spacing: -0.01em; }
-  .pcard-kind { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--turq-deep); font-weight: 700; }
-  .pcard-desc { font-size: 13px; color: var(--ink-soft); line-height: 1.5; flex: 1; }
-  .pcard-price { font-family: var(--display); font-weight: 700; font-size: 16px; margin-top: 4px; }
-  .strip-hint { font-size: 11px; color: var(--ink-soft); letter-spacing: 0.1em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
-  .strip-hint .arrow { animation: nudge 1.6s ease-in-out infinite; }
-  @keyframes nudge { 0%,100%{ transform: translateX(0);} 50%{ transform: translateX(5px);} }
-
-  .strips-section { background: var(--cream); }
-
-  /* ───── Promise trio ───── */
   .promise { background: var(--aqua); }
   .promise-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 4vw, 56px); }
   @media (max-width: 760px) { .promise-inner { grid-template-columns: 1fr; } }
   .promise-item .pno { font-family: var(--display); font-weight: 700; font-size: 13px; color: var(--pink); letter-spacing: 0.2em; margin-bottom: 14px; display:block; }
   .promise-item h4 { font-family: var(--display); font-weight: 600; font-size: 21px; margin-bottom: 10px; letter-spacing: -0.01em; }
   .promise-item p { font-size: 14px; color: var(--ink-soft); line-height: 1.7; }
-
-  /* ───── Reviews ───── */
-  .reviews { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  @media (max-width: 880px) { .reviews { grid-template-columns: 1fr; } }
-  .review { background: var(--paper); border: 1px solid var(--line-soft); border-radius: 18px; padding: 26px; }
-  .review p { font-size: 15px; line-height: 1.6; margin-bottom: 18px; }
-  .review-by { display: flex; align-items: center; gap: 12px; }
-  .review-by img { width: 42px; height: 42px; border-radius: 999px; object-fit: cover; }
-  .review-by .rb-name { font-weight: 700; font-size: 14px; }
-  .review-by .rb-meta { font-size: 12px; color: var(--ink-soft); }
 
   /* ───── Footer ───── */
   footer { background: var(--ink); color: var(--cream); padding: clamp(52px, 7vw, 92px) clamp(18px, 4vw, 56px) 30px; }
@@ -406,74 +438,40 @@
   <a href="#" class="wordmark"><span class="mk-dot"></span>Brava</a>
   <nav class="navlinks">
     <a href="#circulation">Circulation</a>
-    <a href="#oncourt">On Court</a>
+    <a href="#collage">On Court</a>
     <a href="#promise">Why Brava</a>
-    <a href="#reviews">Players</a>
   </nav>
   <button class="bag-btn" id="bagOpen" aria-label="Open bag">
     <span>Bag</span><span class="bag-count empty" id="bagCount">0</span>
   </button>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <img src="images/hero.jpg" alt="Padel players on court" loading="eager">
-  <div class="hero-inner">
-    <span class="hero-eyebrow">Padel Gear · Built for the Social Game</span>
-    <h1>Padel is a party.<br><span class="line2">Bring your A-game.</span></h1>
-    <p>The grips, socks, towels and bags that get you on court, plus Circulation, our blood-flow support for fast rallies and long social sessions. Loud, simple, ready to play.</p>
-    <div class="hero-cta">
-      <a href="#circulation" class="btn btn-primary">Meet Circulation</a>
-      <a href="#oncourt" class="btn btn-ghost">Shop the Gear</a>
-    </div>
+<!-- TOP WORD TICKER -->
+<div class="ticker ticker-pink" aria-hidden="true">
+  <div class="ticker-track">
+    <span>padel</span><span class="sep">/</span><span>rallies</span><span class="sep">/</span><span>social</span><span class="sep">/</span><span>brava</span><span class="sep">/</span><span>padel</span><span class="sep">/</span><span>rallies</span><span class="sep">/</span><span>social</span><span class="sep">/</span><span>brava</span><span class="sep">/</span><span>padel</span><span class="sep">/</span><span>rallies</span><span class="sep">/</span><span>social</span><span class="sep">/</span><span>brava</span><span class="sep">/</span>
   </div>
-</section>
+</div>
 
-<!-- CIRCULATION SPOTLIGHT -->
-<section class="spotlight" id="circulation">
-  <div class="spot-grid">
-    <div class="spot-imgwrap reveal">
-      <img src="images/circulation.png" alt="Circulation blood-flow support supplement bottle">
-    </div>
-    <div class="reveal">
-      <span class="spot-kicker">The Featured Formula</span>
-      <h2 class="spot-title">Circulation</h2>
-      <p class="spot-lead">A blood-flow and circulation supplement, built for padel. It supports circulation and stamina through fast rallies and long social sessions, so you have the legs you want at the end of the night.</p>
-      <ul class="spot-benefits">
-        <li>Supports healthy circulation and blood flow</li>
-        <li>Supports stamina through fast rallies and long sessions</li>
-        <li>Easy to add to your pre-court routine</li>
-      </ul>
-      <p class="spot-ing"><strong>Inside:</strong> L-Citrulline · Beetroot Extract · Ginkgo Biloba · Cayenne · Vitamin B12.</p>
-      <div class="spot-buy">
-        <div class="spot-price" id="spotPrice">$240 <span>/ 3 bottles</span></div>
-      </div>
-      <div class="spot-actions" id="spotTiers" style="margin-top:18px;">
-        <button class="btn btn-pack" data-tier="1">1 Bottle, $149</button>
-        <button class="btn btn-pack" data-tier="2">2 Bottles, $180</button>
-        <button class="btn btn-primary" data-tier="3">3 Bottles, $240</button>
-      </div>
-      <div class="spot-actions" style="margin-top:14px;">
-        <button class="btn btn-primary" id="spotAdd">Add 3 Bottles, $240</button>
-      </div>
-      <p class="spot-disc">A dietary supplement. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Consult your healthcare provider before use, especially if pregnant, nursing, or taking medication.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ON-COURT FILMSTRIP -->
-<section class="section strips-section" id="oncourt">
-  <div class="sec-head">
+<!-- COLLAGE MOSAIC -->
+<section class="collage-section" id="collage">
+  <div class="collage-head">
     <div>
-      <p class="sec-kicker">Filmstrip · On Court</p>
-      <h2 class="sec-title">On-Court Gear</h2>
+      <span class="collage-eyebrow">Padel gear, built for the social game</span>
+      <h1>Padel is a party.<br><span class="accent">Bring your A-game.</span></h1>
     </div>
-    <div class="strip-hint">Scroll <span class="arrow">→</span></div>
+    <p class="lede">Grips, socks, towels and bags that get you on court, plus Circulation, our blood-flow support for fast rallies and long social sessions. Loud, simple, ready to play.</p>
   </div>
-  <div class="strip-wrap">
-    <div class="strip" id="stripGear"></div>
-  </div>
+
+  <div class="mosaic" id="mosaic"></div>
 </section>
+
+<!-- MID WORD TICKER -->
+<div class="ticker ticker-turq ticker-rev" aria-hidden="true">
+  <div class="ticker-track">
+    <span>grip up</span><span class="sep">·</span><span>play loud</span><span class="sep">·</span><span>stay late</span><span class="sep">·</span><span>bring friends</span><span class="sep">·</span><span>grip up</span><span class="sep">·</span><span>play loud</span><span class="sep">·</span><span>stay late</span><span class="sep">·</span><span>bring friends</span><span class="sep">·</span><span>grip up</span><span class="sep">·</span><span>play loud</span><span class="sep">·</span><span>stay late</span><span class="sep">·</span><span>bring friends</span><span class="sep">·</span>
+  </div>
+</div>
 
 <!-- PROMISE TRIO -->
 <section class="section promise" id="promise">
@@ -502,40 +500,6 @@
   </div>
 </section>
 
-<!-- REVIEWS -->
-<section class="section" id="reviews">
-  <div class="sec-head">
-    <div>
-      <p class="sec-kicker">From the courts</p>
-      <h2 class="sec-title">Player notes</h2>
-    </div>
-    <p class="sec-note">A few notes from players who shop the kit. Shared with permission.</p>
-  </div>
-  <div class="reviews">
-    <div class="review reveal">
-      <p>"The overgrips are the ones I keep going back to. Tacky without being sticky, and a 3-pack lasts me weeks of open play."</p>
-      <div class="review-by">
-        <img src="images/face1.jpg" alt="Player headshot">
-        <div><div class="rb-name">Marcus T.</div><div class="rb-meta">Verified buyer</div></div>
-      </div>
-    </div>
-    <div class="review reveal">
-      <p>"I take Circulation before our Saturday social. Can't make big claims, but my legs feel fresher into the later games. Easy to add to the morning."</p>
-      <div class="review-by">
-        <img src="images/face2.jpg" alt="Player headshot">
-        <div><div class="rb-name">Dana R.</div><div class="rb-meta">Verified buyer</div></div>
-      </div>
-    </div>
-    <div class="review reveal">
-      <p>"The racket bag holds two paddles, a towel, balls and my keys. Lives in the car now. Simple and it does the job."</p>
-      <div class="review-by">
-        <img src="images/face3.jpg" alt="Player headshot">
-        <div><div class="rb-name">Priya S.</div><div class="rb-meta">Verified buyer</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer>
   <div class="foot-grid">
@@ -547,9 +511,8 @@
       <p class="foot-h">Shop</p>
       <ul class="foot-list">
         <li><a href="#circulation">Circulation</a></li>
-        <li><a href="#oncourt">On-Court Gear</a></li>
+        <li><a href="#collage">On-Court Gear</a></li>
         <li><a href="#promise">Why Brava</a></li>
-        <li><a href="#reviews">Players</a></li>
       </ul>
     </div>
     <div>
@@ -655,26 +618,80 @@ let cart = loadCart();
 function fmt(n) { return '$' + n.toFixed(2).replace(/\.00$/, ''); }
 function cartTotal(c) { return c.reduce((s, l) => s + l.price * l.qty, 0); }
 
-// ─── Filmstrip ───
-function cardHTML(p) {
+// ─── Collage mosaic ───
+// Each product tile carries a size/rotation class so the grid reads as an
+// asymmetric collage rather than a uniform grid. Word tiles (display type)
+// are interleaved as graphic elements between the product tiles.
+function feattileHTML(p) {
   return `
-  <article class="pcard" data-slug="${p.slug}">
-    <div class="pcard-img">
-      <img src="images/${p.img}" alt="${p.name}" loading="lazy">
-      <span class="pcard-tag">${p.kind}</span>
-      <button class="pcard-add" type="button" data-quick="${p.slug}" aria-label="Quick add ${p.name}">+</button>
+  <article class="tile feattile" id="circulation" data-feat="1">
+    <div class="feat-top">
+      <div class="feat-imgwrap"><img src="images/${p.img}" alt="${p.name} blood-flow support supplement bottle"></div>
+      <div class="feat-headcol">
+        <span class="feat-kicker">The Featured Formula</span>
+        <h2 class="feat-title">Circulation</h2>
+        <p class="feat-lead">A blood-flow and circulation supplement, built for padel. It supports circulation and stamina through fast rallies and long social sessions, so you have the legs you want at the end of the night.</p>
+        <p class="feat-ing"><strong>Inside:</strong> L-Citrulline · Beetroot Extract · Ginkgo Biloba · Cayenne · Vitamin B12.</p>
+      </div>
     </div>
-    <div class="pcard-body">
-      <span class="pcard-kind">${p.kind}</span>
-      <h3 class="pcard-name">${p.name}</h3>
-      <p class="pcard-desc">${p.desc.split('.')[0]}.</p>
-      <div class="pcard-price">${fmt(p.price)}</div>
+    <div class="feat-buy">
+      <div class="feat-price" id="spotPrice">$240 <span>/ 3 bottles</span></div>
+      <div class="feat-tiers" id="spotTiers">
+        <button class="btn btn-pack" data-tier="1">1 Bottle, $149</button>
+        <button class="btn btn-pack" data-tier="2">2 Bottles, $180</button>
+        <button class="btn btn-primary" data-tier="3">3 Bottles, $240</button>
+      </div>
+      <button class="btn feat-add" id="spotAdd">Add 3 Bottles, $240</button>
+      <p class="feat-disc">A dietary supplement. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Consult your healthcare provider before use, especially if pregnant, nursing, or taking medication.</p>
     </div>
   </article>`;
 }
-function renderStrips() {
-  document.getElementById('stripGear').innerHTML = PRODUCTS.filter(p => p.cat === 'gear').map(cardHTML).join('');
-  document.querySelectorAll('.pcard').forEach(card => {
+function ptileHTML(p, cls) {
+  return `
+  <article class="tile ptile ${cls}" data-slug="${p.slug}">
+    <div class="ptile-img">
+      <img src="images/${p.img}" alt="${p.name}" loading="lazy">
+      <span class="ptile-tag">${p.kind}</span>
+      <button class="ptile-add" type="button" data-quick="${p.slug}" aria-label="Quick add ${p.name}">+</button>
+    </div>
+    <div class="ptile-foot">
+      <div><span class="ptile-kind">${p.kind}</span><h3 class="ptile-name">${p.name}</h3></div>
+      <div class="ptile-price">${fmt(p.price)}</div>
+    </div>
+  </article>`;
+}
+function wordtileHTML(fill, word, spin) {
+  const inner = spin ? `<span class="spin">${word}</span>` : `<span>${word}</span>`;
+  return `<div class="tile wordtile ${fill}" aria-hidden="true">${inner}</div>`;
+}
+function renderMosaic() {
+  const gear = PRODUCTS.filter(p => p.cat === 'gear');
+  const supp = PRODUCTS_INDEX['circulation'];
+  // Hand-tuned collage sequence: varied spans, rotations, offsets, word tiles.
+  const tileClass = {
+    overgrip:  'big',
+    wristband: 'rot-a',
+    socks:     'tall rot-b',
+    towel:     'off',
+    bag:       'wide',
+    cap:       'rot-c off',
+    sweatband: 'rot-a',
+  };
+  const parts = [];
+  parts.push(feattileHTML(supp));                              // big 2x2 feature
+  parts.push(ptileHTML(PRODUCTS_INDEX.overgrip, tileClass.overgrip));  // big 2x2
+  parts.push(wordtileHTML('fill-pink', 'play', true));         // graphic word
+  parts.push(ptileHTML(PRODUCTS_INDEX.wristband, tileClass.wristband));
+  parts.push(ptileHTML(PRODUCTS_INDEX.socks, tileClass.socks));// tall
+  parts.push(ptileHTML(PRODUCTS_INDEX.towel, tileClass.towel));
+  parts.push(wordtileHTML('fill-navy', 'rally', false));
+  parts.push(ptileHTML(PRODUCTS_INDEX.bag, tileClass.bag));    // wide
+  parts.push(ptileHTML(PRODUCTS_INDEX.cap, tileClass.cap));
+  parts.push(wordtileHTML('fill-turq', 'social', true));
+  parts.push(ptileHTML(PRODUCTS_INDEX.sweatband, tileClass.sweatband));
+  document.getElementById('mosaic').innerHTML = parts.join('');
+
+  document.querySelectorAll('.ptile').forEach(card => {
     card.addEventListener('click', e => {
       if (e.target.closest('[data-quick]')) return;
       openModal(card.dataset.slug);
@@ -770,8 +787,9 @@ document.getElementById('modalAdd').addEventListener('click', () => {
   toast(`${modalProduct.name}${modalOpt ? ' · ' + modalOpt : ''} added`);
 });
 
-// ─── Spotlight supplement tier selector ───
-(function() {
+// ─── Feature-tile supplement tier selector ───
+// Bound after the mosaic renders, since the feature tile is built dynamically.
+function initSupplementTiers() {
   const tierWrap = document.getElementById('spotTiers');
   const priceEl = document.getElementById('spotPrice');
   const addBtn = document.getElementById('spotAdd');
@@ -798,7 +816,7 @@ document.getElementById('modalAdd').addEventListener('click', () => {
     toast(`${p.name} · ${chosen.label} added`);
   });
   paint();
-})();
+}
 
 // ─── Cart ───
 function addToCart(p, opt, priceOverride) {
@@ -890,7 +908,8 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
 // ─── Init ───
 document.getElementById('year').textContent = new Date().getFullYear();
-renderStrips();
+renderMosaic();
+initSupplementTiers();
 renderCart();
 </script>
 </body>
