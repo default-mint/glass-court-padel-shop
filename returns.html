@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Return &amp; Refund Policy — Brava</title>
+<meta name="description" content="Brava's 30-day return and refund policy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --turq: #12B2A6; --turq-deep: #0C8C82; --pink: #E8447F;
+    --cream: #F7F5F0; --paper: #FFFFFF; --aqua: #DDF1EE; --ink: #16263A;
+    --ink-soft: rgba(22,38,58,0.62); --line: rgba(22,38,58,0.16); --line-soft: rgba(22,38,58,0.08);
+    --display: 'Unbounded', system-ui, sans-serif;
+    --body: 'Onest', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--body); color: var(--ink); background: var(--cream); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 18px clamp(20px, 4vw, 56px); border-bottom: 1px solid var(--line-soft); background: var(--cream); position: sticky; top: 0; z-index: 50; }
+  .wordmark { font-family: var(--display); font-weight: 800; font-size: 22px; letter-spacing: -0.02em; text-decoration: none; display: flex; align-items: center; gap: 9px; }
+  .wordmark .mk-dot { width: 12px; height: 12px; border-radius: 999px; background: var(--turq); border: 2px solid var(--pink); display:inline-block; }
+  .navlinks { display: flex; gap: clamp(14px, 2.4vw, 32px); font-size: 12px; letter-spacing: 0.06em; font-weight: 600; }
+  .navlinks a { text-decoration: none; transition: color 0.2s; }
+  .navlinks a:hover { color: var(--turq-deep); }
+  @media (max-width: 760px) { .navlinks { display: none; } }
+
+  .policy-hero { padding: clamp(56px, 10vw, 120px) clamp(20px, 4vw, 56px) clamp(40px, 6vw, 80px); text-align: center; background: var(--aqua); border-bottom: 1px solid var(--line-soft); }
+  .policy-eyebrow { font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--turq-deep); font-weight: 700; margin-bottom: 18px; }
+  .policy-title { font-family: var(--display); font-weight: 800; font-size: clamp(40px, 6.4vw, 84px); line-height: 0.98; letter-spacing: -0.03em; }
+  .policy-updated { font-size: 12px; color: var(--ink-soft); margin-top: 16px; letter-spacing: 0.06em; }
+
+  .policy { max-width: 760px; margin: 0 auto; padding: clamp(48px, 6vw, 96px) clamp(20px, 4vw, 32px) clamp(72px, 9vw, 140px); }
+  .policy h2 { font-family: var(--display); font-weight: 700; font-size: clamp(24px, 2.6vw, 34px); line-height: 1.15; margin: clamp(36px, 5vw, 56px) 0 clamp(16px, 2vw, 24px); letter-spacing: -0.02em; }
+  .policy h2:first-child { margin-top: 0; }
+  .policy h3 { font-family: var(--body); font-weight: 700; font-size: 16px; letter-spacing: 0.04em; margin: 28px 0 10px; color: var(--ink); }
+  .policy p { font-size: 15px; color: var(--ink); margin-bottom: 14px; line-height: 1.75; }
+  .policy ul { margin: 0 0 18px 22px; padding: 0; }
+  .policy li { font-size: 15px; line-height: 1.75; margin-bottom: 6px; }
+  .policy address { font-style: normal; padding: 18px 22px; background: var(--paper); border-left: 3px solid var(--turq); margin: 16px 0; font-size: 14px; line-height: 1.7; border-radius: 8px; }
+  .policy a { color: var(--turq-deep); text-decoration: underline; text-underline-offset: 3px; }
+
+  footer { background: var(--ink); color: var(--cream); padding: clamp(56px, 7vw, 96px) clamp(20px, 4vw, 56px) 32px; }
+  .foot-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: clamp(32px, 5vw, 80px); padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.18); }
+  @media (max-width: 880px) { .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+  .foot-mark { font-family: var(--display); font-weight: 800; font-size: 28px; margin-bottom: 16px; display:flex; align-items:center; gap:9px; letter-spacing: -0.02em; }
+  .foot-mark .mk-dot { width: 12px; height: 12px; border-radius: 999px; background: var(--turq); border: 2px solid var(--pink); display:inline-block; }
+  .foot-blurb { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.62); max-width: 320px; }
+  .foot-h { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--turq); margin-bottom: 16px; font-weight: 700; }
+  .foot-list { list-style: none; display: flex; flex-direction: column; gap: 9px; padding: 0; }
+  .foot-list a { font-size: 13px; color: rgba(255,255,255,0.78); text-decoration: none; transition: color 0.2s; }
+  .foot-list a:hover { color: #fff; }
+  .foot-disc { max-width: 1280px; margin: 22px auto 0; font-size: 11px; color: rgba(255,255,255,0.42); line-height: 1.6; }
+  .foot-bottom { max-width: 1280px; margin: 14px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="index.html" class="wordmark"><span class="mk-dot"></span>Brava</a>
+  <nav class="navlinks">
+    <a href="index.html#circulation">Circulation</a>
+    <a href="index.html#oncourt">On Court</a>
+    <a href="index.html#promise">Why Brava</a>
+  </nav>
+</header>
+
+<section class="policy-hero">
+  <p class="policy-eyebrow">Help</p>
+  <h1 class="policy-title">Returns &amp; Refunds</h1>
+  <p class="policy-updated">Last updated: January 2026</p>
+</section>
+
+<article class="policy">
+
+  <p>This Return &amp; Refund Policy outlines your rights when purchasing products from brava.shop ("Website"), operated by PLACEHOLDER LLC.</p>
+
+  <h2>1. Company Information</h2>
+
+  <address>
+    PLACEHOLDER LLC<br>
+    123 Main Street<br>
+    Placeholder, State 10101<br>
+    United States<br>
+    Email: <a href="mailto:help@brava.com">help@brava.com</a>
+  </address>
+
+  <h2>2. Returns Window</h2>
+
+  <p>You may return unused products within 30 days of delivery for a full refund.</p>
+
+  <p>Requirements:</p>
+
+  <ul>
+    <li>Items must be unused and in their original condition with all packaging and tags intact.</li>
+    <li>Dietary supplement products must be returned unopened with their factory seal intact for safety reasons.</li>
+    <li>Proof of purchase is required.</li>
+    <li>Items showing signs of use, wear, or damage cannot be refunded.</li>
+    <li>Final-sale items, where designated, are not eligible for return.</li>
+  </ul>
+
+  <h2>3. Bundle &amp; Promotional Purchases</h2>
+
+  <p>Items purchased as part of a multi-item bundle follow the same 30-day return policy. If only part of a bundle is returned, the remaining items will be repriced at their standard rate, and the difference deducted from the refund.</p>
+
+  <h2>4. Refunds</h2>
+
+  <p>Refunds are issued to the original payment method within 7–10 business days after returned goods are received and inspected. Standard return shipping is the responsibility of the customer unless the product was defective or shipped in error, in which case we cover the return label.</p>
+
+  <h2>5. Returns Process and Address</h2>
+
+  <p>To initiate a return, contact: <a href="mailto:help@brava.com">help@brava.com</a> with your order number. We will reply with return instructions and the address.</p>
+
+  <address>
+    RETURNS — BRAVA<br>
+    PLACEHOLDER LLC<br>
+    123 Main Street<br>
+    Placeholder, State 10101<br>
+    United States
+  </address>
+
+  <p>Please do not send any returns before contacting our support team — unannounced returns may not be processed.</p>
+
+  <h2>6. Exchanges</h2>
+
+  <p>If you'd like a different size in the same item, email <a href="mailto:help@brava.com">help@brava.com</a> and we'll do our best to hold a replacement while your return is in transit. Subject to availability.</p>
+
+  <h2>7. Policy Updates</h2>
+
+  <p>We may revise this Policy when operational or regulatory requirements change. The effective version is the one displayed on this page at the time of your purchase.</p>
+
+</article>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-mark"><span class="mk-dot"></span>Brava</div>
+      <p class="foot-blurb">A padel store. A short, fun kit and Circulation, our blood-flow support for fast rallies and long social sessions. Free US shipping over $100.</p>
+    </div>
+    <div>
+      <p class="foot-h">Shop</p>
+      <ul class="foot-list">
+        <li><a href="index.html#circulation">Circulation</a></li>
+        <li><a href="index.html#oncourt">On-Court Gear</a></li>
+        <li><a href="index.html#promise">Why Brava</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="foot-h">Help</p>
+      <ul class="foot-list">
+        <li><a href="shipping.html">Shipping</a></li>
+        <li><a href="returns.html">Returns</a></li>
+        <li><a href="mailto:help@brava.com">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="foot-h">Legal</p>
+      <ul class="foot-list">
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="foot-disc">Circulation is a dietary supplement. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+  <div class="foot-bottom">
+    <span>© <span id="year"></span> PLACEHOLDER LLC</span>
+    <span>123 Main Street, Placeholder, State 10101</span>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
