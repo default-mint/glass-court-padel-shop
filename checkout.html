@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout | Brava</title>
-<meta name="description" content="Secure checkout for your Brava bag.">
+<title>Checkout | Padel Supply Store</title>
+<meta name="description" content="Secure checkout for your Padel Supply Store bag.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -40,7 +40,7 @@
   @media (max-width: 700px) { .b-help, .b-info { font-size: 10px; } .b-loud { font-size: 10.5px; } .b-loud-track { height: 36px; } }
 
   .nav { display: flex; align-items: center; justify-content: space-between; padding: 16px clamp(18px,4vw,56px); border-bottom: 1px solid var(--line-soft); }
-  .wordmark { font-family: var(--display); font-weight: 800; font-size: 24px; display:flex; align-items:center; gap:9px; letter-spacing: -0.02em; }
+  .wordmark { font-family: var(--display); font-weight: 800; font-size: clamp(15px, 2.4vw, 20px); display:flex; align-items:center; gap:9px; letter-spacing: -0.02em; white-space: nowrap; }
   .wordmark .mk-dot { width: 13px; height: 13px; border-radius: 999px; background: var(--turq); border: 2px solid var(--pink); display:inline-block; }
   .secure { display: flex; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0.06em; color: var(--ink-soft); font-weight: 600; }
   .secure svg { width: 14px; height: 14px; color: var(--turq-deep); }
@@ -151,7 +151,7 @@
 </div>
 
 <header class="nav">
-  <a href="index.html" class="wordmark"><span class="mk-dot"></span>Brava</a>
+  <a href="index.html" class="wordmark"><span class="mk-dot"></span>Padel Supply Store</a>
   <span class="secure"><svg viewBox="0 0 16 16" fill="none"><path d="M3 7V5a5 5 0 0110 0v2M3 7h10v7H3V7z" stroke="currentColor" stroke-width="1.4"/></svg>Secure Checkout</span>
 </header>
 
@@ -257,7 +257,7 @@
 <section id="successScreen" class="success">
   <div class="success-mark">✓</div>
   <h1>Game on.</h1>
-  <p id="successName">Your Brava order is confirmed.</p>
+  <p id="successName">Your Padel Supply Store order is confirmed.</p>
   <p id="successEmail"></p>
   <div class="success-order" id="successOrderId"></div>
   <br><br>
@@ -478,7 +478,7 @@ document.getElementById('orderForm').addEventListener('submit', async (e) => {
   document.getElementById('checkoutMain').style.display = 'none';
   document.querySelector('.steps').style.display = 'none';
   const success = document.getElementById('successScreen');
-  document.getElementById('successName').textContent = `Thanks, ${payload.customer.first_name}. Your Brava order is confirmed.`;
+  document.getElementById('successName').textContent = `Thanks, ${payload.customer.first_name}. Your Padel Supply Store order is confirmed.`;
   document.getElementById('successEmail').textContent = `A confirmation has been sent to ${payload.email}. Tracking arrives within 1 business day.`;
   document.getElementById('successOrderId').textContent = `Order · ${orderId}`;
   success.classList.add('show');
