@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shipping Policy — Brava</title>
+<meta name="description" content="Shipping rates and delivery times for Brava — free standard shipping across the United States.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --turq: #12B2A6; --turq-deep: #0C8C82; --pink: #E8447F;
+    --cream: #F7F5F0; --paper: #FFFFFF; --aqua: #DDF1EE; --ink: #16263A;
+    --ink-soft: rgba(22,38,58,0.62); --line: rgba(22,38,58,0.16); --line-soft: rgba(22,38,58,0.08);
+    --display: 'Unbounded', system-ui, sans-serif;
+    --body: 'Onest', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--body); color: var(--ink); background: var(--cream); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 18px clamp(20px, 4vw, 56px); border-bottom: 1px solid var(--line-soft); background: var(--cream); position: sticky; top: 0; z-index: 50; }
+  .wordmark { font-family: var(--display); font-weight: 800; font-size: 22px; letter-spacing: -0.02em; text-decoration: none; display: flex; align-items: center; gap: 9px; }
+  .wordmark .mk-dot { width: 12px; height: 12px; border-radius: 999px; background: var(--turq); border: 2px solid var(--pink); display:inline-block; }
+  .navlinks { display: flex; gap: clamp(14px, 2.4vw, 32px); font-size: 12px; letter-spacing: 0.06em; font-weight: 600; }
+  .navlinks a { text-decoration: none; transition: color 0.2s; }
+  .navlinks a:hover { color: var(--turq-deep); }
+  @media (max-width: 760px) { .navlinks { display: none; } }
+
+  .policy-hero { padding: clamp(56px, 10vw, 120px) clamp(20px, 4vw, 56px) clamp(40px, 6vw, 80px); text-align: center; background: var(--aqua); border-bottom: 1px solid var(--line-soft); }
+  .policy-eyebrow { font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--turq-deep); font-weight: 700; margin-bottom: 18px; }
+  .policy-title { font-family: var(--display); font-weight: 800; font-size: clamp(40px, 6.4vw, 84px); line-height: 0.98; letter-spacing: -0.03em; }
+  .policy-updated { font-size: 12px; color: var(--ink-soft); margin-top: 16px; letter-spacing: 0.06em; }
+
+  .policy { max-width: 760px; margin: 0 auto; padding: clamp(48px, 6vw, 96px) clamp(20px, 4vw, 32px) clamp(72px, 9vw, 140px); }
+  .policy h2 { font-family: var(--display); font-weight: 700; font-size: clamp(24px, 2.6vw, 34px); line-height: 1.15; margin: clamp(36px, 5vw, 56px) 0 clamp(16px, 2vw, 24px); letter-spacing: -0.02em; }
+  .policy h2:first-child { margin-top: 0; }
+  .policy h3 { font-family: var(--body); font-weight: 700; font-size: 16px; letter-spacing: 0.04em; margin: 28px 0 10px; color: var(--ink); }
+  .policy p { font-size: 15px; color: var(--ink); margin-bottom: 14px; line-height: 1.75; }
+  .policy ul { margin: 0 0 18px 22px; padding: 0; }
+  .policy li { font-size: 15px; line-height: 1.75; margin-bottom: 6px; }
+  .policy address { font-style: normal; padding: 18px 22px; background: var(--paper); border-left: 3px solid var(--turq); margin: 16px 0; font-size: 14px; line-height: 1.7; border-radius: 8px; }
+  .policy a { color: var(--turq-deep); text-decoration: underline; text-underline-offset: 3px; }
+
+  table.ship { width: 100%; border-collapse: collapse; margin: 16px 0 22px; font-size: 14px; }
+  table.ship th, table.ship td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line-soft); }
+  table.ship th { background: var(--paper); font-weight: 700; letter-spacing: 0.08em; font-size: 11px; text-transform: uppercase; color: var(--ink-soft); }
+  table.ship td:last-child { white-space: nowrap; }
+
+  footer { background: var(--ink); color: var(--cream); padding: clamp(56px, 7vw, 96px) clamp(20px, 4vw, 56px) 32px; }
+  .foot-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: clamp(32px, 5vw, 80px); padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.18); }
+  @media (max-width: 880px) { .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+  .foot-mark { font-family: var(--display); font-weight: 800; font-size: 28px; margin-bottom: 16px; display:flex; align-items:center; gap:9px; letter-spacing: -0.02em; }
+  .foot-mark .mk-dot { width: 12px; height: 12px; border-radius: 999px; background: var(--turq); border: 2px solid var(--pink); display:inline-block; }
+  .foot-blurb { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.62); max-width: 320px; }
+  .foot-h { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--turq); margin-bottom: 16px; font-weight: 700; }
+  .foot-list { list-style: none; display: flex; flex-direction: column; gap: 9px; padding: 0; }
+  .foot-list a { font-size: 13px; color: rgba(255,255,255,0.78); text-decoration: none; transition: color 0.2s; }
+  .foot-list a:hover { color: #fff; }
+  .foot-disc { max-width: 1280px; margin: 22px auto 0; font-size: 11px; color: rgba(255,255,255,0.42); line-height: 1.6; }
+  .foot-bottom { max-width: 1280px; margin: 14px auto 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="index.html" class="wordmark"><span class="mk-dot"></span>Brava</a>
+  <nav class="navlinks">
+    <a href="index.html#circulation">Circulation</a>
+    <a href="index.html#oncourt">On Court</a>
+    <a href="index.html#promise">Why Brava</a>
+  </nav>
+</header>
+
+<section class="policy-hero">
+  <p class="policy-eyebrow">Help</p>
+  <h1 class="policy-title">Shipping</h1>
+  <p class="policy-updated">Last updated: January 2026</p>
+</section>
+
+<article class="policy">
+
+  <p>At Brava, we aim to process and deliver your order as quickly and reliably as possible. Please review our shipping terms below.</p>
+
+  <h2>Order Processing Time</h2>
+
+  <p>All orders are processed within 1 business day after successful payment confirmation (excluding weekends and US public holidays). Once your order has been processed and dispatched, you will receive a shipment confirmation email with tracking.</p>
+
+  <h2>Delivery Timeframes</h2>
+
+  <p>We ship orders using trusted carrier partners — USPS, UPS, and FedEx. The shipping carrier is selected automatically based on your delivery location and operational availability.</p>
+
+  <p>Estimated delivery times after dispatch:</p>
+
+  <table class="ship">
+    <thead>
+      <tr>
+        <th>Region</th>
+        <th>Estimated Delivery</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Continental United States</td><td>4–7 business days</td></tr>
+      <tr><td>Alaska &amp; Hawaii</td><td>7–10 business days</td></tr>
+      <tr><td>US Territories (PR, GU, etc.)</td><td>10–14 business days</td></tr>
+    </tbody>
+  </table>
+
+  <p>Delivery times are estimates and may vary due to carrier operations, public holidays, or circumstances beyond our control.</p>
+
+  <h2>Shipping Fees</h2>
+
+  <p>Brava offers <strong>free standard shipping on US orders over $100</strong>. Orders below $100 carry a flat $7.99 standard shipping fee. Expedited shipping options, where available, are displayed at checkout and apply only to the specific offer selected at the time of purchase. All applicable shipping costs are shown before payment is completed.</p>
+
+  <h2>International Shipping</h2>
+
+  <p>Brava ships within the United States only. We hope to open international shipping in the future — sign up at checkout for early access.</p>
+
+  <h2>Failed or Delayed Deliveries</h2>
+
+  <p>If your order has not been delivered within the estimated delivery timeframe, please contact our customer support team. If an order is confirmed as lost in transit or cannot be delivered, you may request a full refund in accordance with applicable consumer protection laws.</p>
+
+  <h2>Incorrect Address Information</h2>
+
+  <p>Customers are responsible for providing accurate and complete shipping details at checkout. We are not responsible for delivery delays or non-delivery caused by incorrect or incomplete address information. If a parcel is returned to us due to an undeliverable address, we will contact you to arrange re-shipment at the original shipping cost.</p>
+
+  <h2>Contact Us</h2>
+
+  <p>If you have any questions regarding shipping or delivery, please contact our customer support team at <a href="mailto:help@brava.com">help@brava.com</a>.</p>
+
+</article>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-mark"><span class="mk-dot"></span>Brava</div>
+      <p class="foot-blurb">A padel store. A short, fun kit and Circulation, our blood-flow support for fast rallies and long social sessions. Free US shipping over $100.</p>
+    </div>
+    <div>
+      <p class="foot-h">Shop</p>
+      <ul class="foot-list">
+        <li><a href="index.html#circulation">Circulation</a></li>
+        <li><a href="index.html#oncourt">On-Court Gear</a></li>
+        <li><a href="index.html#promise">Why Brava</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="foot-h">Help</p>
+      <ul class="foot-list">
+        <li><a href="shipping.html">Shipping</a></li>
+        <li><a href="returns.html">Returns</a></li>
+        <li><a href="mailto:help@brava.com">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="foot-h">Legal</p>
+      <ul class="foot-list">
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="foot-disc">Circulation is a dietary supplement. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+  <div class="foot-bottom">
+    <span>© <span id="year"></span> PLACEHOLDER LLC</span>
+    <span>123 Main Street, Placeholder, State 10101</span>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
