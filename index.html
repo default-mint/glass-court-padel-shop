@@ -578,7 +578,7 @@
 
 <script>
 const PRODUCTS = [
-  { slug:'circulation', cat:'supplement', kind:'Blood Flow & Circulation', name:'Vasa', price:240.00, img:'circulation.png', supplement:true,
+  { slug:'circulation', cat:'supplement', kind:'Blood Flow & Circulation', name:'Vasa', price:240.00, img:'vasa-1.png', supplement:true,
     desc:'A blood-flow and circulation supplement built for padel. It supports circulation and stamina through fast rallies and long social sessions. Inside: L-Citrulline, Beetroot Extract, Ginkgo Biloba, Cayenne, and Vitamin B12.' },
 
   // On-court gear
@@ -628,7 +628,7 @@ function feattileHTML(p) {
   return `
   <article class="tile feattile" id="circulation" data-feat="1">
     <div class="feat-top">
-      <div class="feat-imgwrap"><img src="images/${p.img}" alt="${p.name} blood-flow support supplement bottle"></div>
+      <div class="feat-imgwrap"><img id="spotImg" src="images/vasa-3.png" alt="${p.name} blood-flow support supplement bottle, 3 bottle bundle"></div>
       <div class="feat-headcol">
         <span class="feat-kicker">The Featured Formula</span>
         <h2 class="feat-title">Vasa</h2>
@@ -797,6 +797,7 @@ function initSupplementTiers() {
   const tierWrap = document.getElementById('spotTiers');
   const priceEl = document.getElementById('spotPrice');
   const addBtn = document.getElementById('spotAdd');
+  const imgEl = document.getElementById('spotImg');
   if (!tierWrap || !addBtn) return;
   let chosen = SUPP_TIERS.find(t => t.id === SUPP_DEFAULT);
   function paint() {
@@ -805,6 +806,7 @@ function initSupplementTiers() {
       b.classList.toggle('btn-primary', on);
       b.classList.toggle('btn-pack', !on);
     });
+    if (imgEl) imgEl.src = `images/vasa-${chosen.id}.png`;
     priceEl.innerHTML = `${fmt(chosen.price)} <span>/ ${chosen.label.toLowerCase()}</span>`;
     addBtn.textContent = `Add ${chosen.label}, ${fmt(chosen.price)}`;
   }
